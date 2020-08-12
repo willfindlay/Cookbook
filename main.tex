@@ -59,11 +59,36 @@
 \renewcommand*{\recipefreeformfont}{\small\itshape\sffamily}
 \renewcommand*{\recipemethodfont}{\small\sffamily}
 
-\RecipeWidths{\textwidth}{3cm}{0.5cm}{3cm}{.75cm}{.75cm}
+\RecipeWidths{\textwidth}{3cm}{0.5cm}{2.5cm}{.75cm}{.75cm}
 
 \renewcommand{\familydefault}{\sfdefault}
 
 \setcounter{tocdepth}{3}
+
+% Text on blank pages of parts
+\makeatletter
+\def\@endpart{\vfil\newpage
+              \if@twoside
+               \if@openright
+                \null
+                \thispagestyle{empty}%
+%<<<<<<<<<<<<<<<<<<<<
+\vspace*{\fill}%
+\begin{minipage}{0.7\textwidth}
+\partnote
+\end{minipage}
+\vspace*{\fill}%
+%<<<<<<<<<<<<<<<<<<<<
+                \newpage
+               \fi
+              \fi
+              \if@tempswa
+                \twocolumn
+              \fi}
+\newcommand\partnote{}
+\makeatother
+
+\usepackage{wasysym}
 
 % =========================================================================== %
 % Document                                                                    %
@@ -100,14 +125,14 @@
 \vfill
 \begin{minipage}{0.7\textwidth}
 \epigraph{
-It's a piece of cake to bake a pretty cake,\\
+\twonotes~It's a piece of cake to bake a pretty cake,\\
 If the way is hazy,\\
 You gotta do the cooking by the book,\\
 You know you can't be lazy!\\
 Never use a messy recipe,\\
 The cake will end up crazy,\\
 If you do the cooking by the book,\\
-Then you'll have a cake.}{Stephanie, Lazy Town}
+Then you'll have a cake.~\eighthnote}{Stephanie, Lazy Town}
 \end{minipage}
 \vfill
 \newpage
@@ -120,10 +145,16 @@ Then you'll have a cake.}{Stephanie, Lazy Town}
 % ----------------------------- %
 %\onehalfspacing
 
+\renewcommand*{\partnote}{
+\epigraph{Tradition is not the worship of ashes, but the preservation of fire.}{Gustav Mahler}
+}
 \part{Traditional Recipes}
 
 \include{chapters/findlay-family}
 
+\renewcommand*{\partnote}{
+\epigraph{In department stores, so much kitchen equipment is bought indiscriminately by people who just come in for men's underwear. }{Julia Child}
+}
 \part{Special Equipment and Techniques}
 
 % TODO: include main document sections here
