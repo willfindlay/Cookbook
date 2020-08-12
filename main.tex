@@ -1,0 +1,142 @@
+% =========================================================================== %
+% Preamble                                                                    %
+% =========================================================================== %
+
+\documentclass[a4paper,11pt]{memoir}
+\usepackage[utf8]{inputenc}
+
+\title{Cooking by the Book}
+
+\author{William Findlay}
+%\affiliation{Carleton University}
+%\email{williamfindlay@cmail.carleton.ca}
+
+\usepackage[dvipsnames]{xcolor}
+\definecolor[named]{ACMBlue}{cmyk}{1,0.1,0,0.1}
+\definecolor[named]{ACMYellow}{cmyk}{0,0.16,1,0}
+\definecolor[named]{ACMOrange}{cmyk}{0,0.42,1,0.01}
+\definecolor[named]{ACMRed}{cmyk}{0,0.90,0.86,0}
+\definecolor[named]{ACMLightBlue}{cmyk}{0.49,0.01,0,0}
+\definecolor[named]{ACMGreen}{cmyk}{0.20,0,1,0.19}
+\definecolor[named]{ACMPurple}{cmyk}{0.55,1,0,0.15}
+\definecolor[named]{ACMDarkBlue}{cmyk}{1,0.58,0,0.21}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=ACMPurple,
+    urlcolor=ACMBlue,
+}
+
+\usepackage{cleveref}
+\usepackage{csquotes}
+
+\usepackage{epigraph}
+\setlength\epigraphwidth{.6\textwidth}
+\renewcommand{\epigraphsize}{\small\itshape}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.25pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead{}   % clear all headers
+\fancyfoot{}   % clear all footers
+\fancyfoot[CE,CO]{\small\thepage}
+% left mark holds the chapter title
+\renewcommand{\chaptermark}[1]{\markboth{#1}{\textsection\thechapter~#1}}
+\renewcommand{\sectionmark}[1]{\markright{\textsection\thesection~#1}}
+\fancyhead[LO]{\small\nouppercase{\itshape\thetitle}} % book title
+\fancyhead[LE]{\small\nouppercase{\itshape\leftmark}} % chapter title
+\fancyhead[RE,RO]{\small\nouppercase{\itshape\rightmark}} % section title
+
+\usepackage[nonumber,contents]{cuisine}
+\renewcommand*{\recipetitlefont}{\large\bfseries\sffamily}
+\renewcommand*{\recipenumberfont}{\large\bfseries\sffamily}
+\renewcommand*{\recipequantityfont}{\small\sffamily}
+\renewcommand*{\recipeunitfont}{\small\sffamily}
+\renewcommand*{\recipeingredientfont}{\small\itshape\sffamily}
+\renewcommand*{\recipestepnumberfont}{\small\bfseries\sffamily}
+\renewcommand*{\recipefreeformfont}{\small\itshape\sffamily}
+\renewcommand*{\recipemethodfont}{\small\sffamily}
+
+\RecipeWidths{\textwidth}{3cm}{0.5cm}{3cm}{.75cm}{.75cm}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\setcounter{tocdepth}{3}
+
+% =========================================================================== %
+% Document                                                                    %
+% =========================================================================== %
+
+\begin{document}
+
+% ----------------------------- %
+% Uncomment for title page      %
+% ----------------------------- %
+\maketitle
+\thispagestyle{empty}
+\pagenumbering{roman}
+\newpage
+\setcounter{page}{1}
+
+% ----------------------------- %
+% Uncomment ToC, LoT, LoF, LoL: %
+% ----------------------------- %
+{
+  \hypersetup{linkcolor=black}
+  \tableofcontents
+}
+%\listoffigures
+%\newpage
+%\listoftables
+%\newpage
+%\lstlistoflistings
+%\newpage
+
+\newpage
+\thispagestyle{empty}
+\
+\vfill
+\begin{minipage}{0.7\textwidth}
+\epigraph{
+It's a piece of cake to bake a pretty cake,\\
+If the way is hazy,\\
+You gotta do the cooking by the book,\\
+You know you can't be lazy!\\
+Never use a messy recipe,\\
+The cake will end up crazy,\\
+If you do the cooking by the book,\\
+Then you'll have a cake.}{Stephanie, Lazy Town}
+\end{minipage}
+\vfill
+\newpage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% ----------------------------- %
+% Uncomment for onehalfspacing  %
+% ----------------------------- %
+%\onehalfspacing
+
+\part{Traditional Recipes}
+
+\include{chapters/findlay-family}
+
+\part{Special Equipment and Techniques}
+
+% TODO: include main document sections here
+\include{chapters/air-fryer}
+
+
+
+% ----------------------------- %
+% Uncomment for bibliography    %
+% ----------------------------- %
+%\clearpage
+%\printbibliography
+
+\end{document}
+
+% vim:syn=tex
